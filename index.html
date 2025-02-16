@@ -20,7 +20,9 @@
       min-height: 100vh;
       font-family: 'Arial', sans-serif;
       overflow: hidden;
-      background: #000;
+      background: url(pc.png);
+      background-position: center;
+      background-size: cover;
       position: relative;
     }
 
@@ -58,6 +60,7 @@
       animation: titleGlow 2s infinite;
       text-align: center;
       margin-bottom: 30px;
+      user-select: none;
     }
 
     .cake-container {
@@ -66,6 +69,7 @@
     }
 
     .cake {
+      color: chocolate;
       font-size: 120px;
       animation: cakeFloat 3s infinite ease-in-out;
       position: relative;
@@ -99,6 +103,7 @@
     }
 
     .balloons {
+      color: yellow;
       position: fixed;
       width: 100%;
       height: 100%;
@@ -109,16 +114,6 @@
       position: absolute;
       font-size: 50px;
       animation: balloonFloat 6s infinite ease-in-out;
-    }
-
-    .message {
-      color: white;
-      font-size: 2em;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: messageAppear 1s forwards;
-      margin-top: 20px;
     }
 
     @keyframes titleGlow {
@@ -141,11 +136,12 @@
       50% { transform: translateY(-30px) rotate(-3deg); }
     }
 
-    @keyframes messageAppear {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 768px) {
+      body{
+        background: url('/mobile.png');
+        background-size: cover;
+        background-position: center;
+      }
       h1 {
         font-size: 3em;
       }
@@ -156,14 +152,6 @@
 
       .cake-shadow {
         width: 80px;
-      }
-
-      .message {
-        font-size: 1.5em;
-      }
-
-      body {
-        background: linear-gradient(45deg, #1a1a1a, #000);
       }
     }
   </style>
@@ -179,7 +167,6 @@
       <div class="cake">🎂</div>
       <div class="cake-shadow"></div>
     </div>
-    <div class="message">Make a wish! ✨</div>
   </div>
 
   <script>
@@ -248,7 +235,7 @@
     const balloonsContainer = document.querySelector('.balloons');
     const balloonEmojis = ['🎈', '🎈', '🎈', '🎈'];
     
-    for(let i = 0; i < 10; i++) {
+    for(let i = 0; i < 20; i++) {
       const balloon = document.createElement('div');
       balloon.className = 'balloon';
       balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
